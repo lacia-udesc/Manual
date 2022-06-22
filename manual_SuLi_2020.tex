@@ -240,7 +240,7 @@ O usuário tem a liberdade de definir as condições iniciais e de contorno dese
 \subsection{Considerações adicionais}
 O código é escrito na linguagem de programação "Fortran 90"\ desenvolvido na plataforma Linux, utilizando o programa Gfortran (ao usuário do Windows é possível utilizar o código após algumas configurações também abordadas neste manual, vide \ref{WindowsUsers}).
 
-Para o pós-processamento dos resultados é recomendado o programa livre \verb|Paraview| (abordado na seção \ref{visu}), entretanto o usuário tem a liberdade de utilizar qualquer outro programa de seu interesse, bastando adaptar o formato dos dados de saída do \SL\ de acordo com o programa escolhido.
+Para o pós-processamento e visualização dos resultados é recomendado o programa livre \verb|Paraview| (abordado na seção \ref{visu}), entretanto o usuário tem a liberdade de utilizar qualquer outro programa de seu interesse, bastando adaptar o formato dos dados de saída do \SL\ de acordo com o programa escolhido.
 
 Ao utilizar o módulo \SLIT\ favor referenciar a pulicação \cite{monteiro2014} e caso utilize \SLIC\ favor referenciar a publicação \cite{monteiro2019}. O \SL\ é um código livre e aberto e a única forma de fortalecer o mesmo é ampliando a sua utilização.
 \newpage
@@ -260,27 +260,32 @@ Os requisitos necessários para a melhor utilização do \SL\ solicitam um compu
 Para usuários do Windows, há uma etapa de instalação inicial extra, que envolve a configuração do ambiente Ubuntu. É necessário que siga os passos contidos no Apêndice \ref{InstallUbuntu} e depois retorne a este tópico, prosseguindo a instalação naturalmente idealizada para usuários Linux.
 
 %Update e Upgrade do sistema%
-\subsubsection{Para usuários Linux e Windows}  \label{ContinueInstall}
-Para usuários Linux (ou Windows que já cumpriram o passo anterior), é necessário garantir que o sistema operacional está atualizado a fim de evitar erros de compatibilidade. Para tal, siga os passos seguintes no terminal de comando do Linux:
+\subsubsection{Usuários Linux e Windows}  \label{ContinueInstall}
+Para usuários Linux (ou Windows que já cumpriram o passo anterior), é necessário garantir que o sistema operacional esteja atualizado a fim de evitar erros de compatibilidade. Para tal, \textbf{no terminal de comando do Linux}, digite os comandos enumerados a seguir:
 
 \begin{verbatim}
-sudo apt-get update (Para compreender os programas e arquivos desatualizados)
+	1) sudo apt-get update
 \end{verbatim}
+(Compreende os programas e arquivos desatualizados)
 
 \begin{verbatim}
-sudo apt-get upgrade (Para efetivamente atualizar o sistema)
+	2) sudo apt-get upgrade
 \end{verbatim}
-
+(Efetivamente atualiza o sistema)
+\\
 %gfortran e Makefile%
 Prosseguindo, é necessário instalar os programas {\bf gfortran} e {\bf MakeFile} em sua máquina, para que o código do \SL\ possa ser corretamente interpretado e compilado. Portanto, ainda no terminal, siga estes comandos para realizar a instalação:
 
 \begin{verbatim}
-sudo apt-get install gfortran	(Para instalar o gfortran)
+3) sudo apt-get install gfortran
 \end{verbatim}
+(Para instalar o gfortran)
 
 \begin{verbatim}
-sudo apt-get install make	(Para instalar o MakeFile)
+4) sudo apt-get install make
 \end{verbatim}
+(Para instalar o MakeFile)
+\\
 
 Agora está tudo instalado e configurado para a utilização do \SL. A instalação do visualizador de dados Paraview é apresentada no Capítulo \ref{visu}. Caso a instalação de algum desses pacotes não seja efetuada com sucesso, tente refazer as etapas de configuração, instalação e atualização do sistema. Caso o problema persista entre em contato pelo e-mail: leonardo.monteiro@udesc.br
 
@@ -661,23 +666,31 @@ Assim, o usuário, tendo um conhecimento básico do programa, pode usufruir dos 
 
 \newpage
 \appendix
-\section{Apêndice: Ambiente Ubuntu no Windows}
+\section{Apêndice: ambiente Ubuntu no Windows}
 \label{InstallUbuntu}
 
-\paragraph{Preparando o Windows:} É necessário habilitar o sistema para aceitar qualquer distribuição Linux que venha a ser utilizada, para tal siga o caminho abaixo.
+\subsection{Preparando o Windows}
+É necessário habilitar o sistema para aceitar qualquer distribuição Linux que venha a ser utilizada, para tal siga o caminho abaixo.
 
 \begin{verbatim}
-No "Menu Iniciar" do seu Windows vá para o "Painel De Controle".
-Então clique em "Programas".
-Depois clique em "Ativar ou desativar recursos do Windows".
-Na janela que será aberta habilite a opção "Subsistema do Windows para Linux"
+	1) No "Menu Iniciar" do seu Windows, vá para o "Painel De Controle";
+	2) Clique em "Programas";
+	3) Clique em "Ativar ou desativar recursos do Windows";
+	4) Na janela que será aberta, habilite a opção "Subsistema do Windows para Linux"
 \end{verbatim}
-Após ter realizado esse procedimento, é preciso reiniciar seu computador para que as alterações sejam devidamente atualizadas, caso contrário o usuário enfrentará problemas na próxima etapa de instalação.
+Após ter realizado esse procedimento, é preciso \textbf{reiniciar} seu computador para que as alterações sejam devidamente atualizadas, caso contrário o usuário enfrentará problemas na próxima etapa de instalação.
 
 
 % dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart --> Comando pra configuração direta pelo cmd!
 
-\paragraph{Instalando o Ubuntu:} Após a reinicialização do sistema, é preciso instalar efetivamente a distribuição Linux desejada, neste caso, o ambiente Ubuntu. Para tanto, abra o aplicativo ``Microsoft Store'' e pesquise por ``Ubuntu'', faça o download e abra o aplicativo Ubuntu que foi instalado em seu computador.
+\subsection{Instalando o Ubuntu} Após a reinicialização do sistema, é preciso \textbf{instalar} efetivamente a distribuição Linux desejada, neste caso, o ambiente Ubuntu. Dessa forma, siga a enumeração seguinte:
+
+\begin{verbatim}
+	1) Abra o aplicativo ``Microsoft Store'';
+	2) Pesquise por ``Ubuntu'';
+	3) Faça o download;
+	4) Abra o aplicativo Ubuntu que foi instalado em seu computador.
+\end{verbatim}
 
 A primeira vez que estiver acessando o ambiente Ubuntu, será pedido que um usuário e uma senha sejam cadastrados, para que o processo de instalação seja efetuado com sucesso. Guarde estas informações, pois elas podem ser importantes para a utilização do Ubuntu como subsistema do Windows.
 
