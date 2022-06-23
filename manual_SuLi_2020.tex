@@ -272,7 +272,7 @@ Para usuários Linux (ou Windows que já cumpriram o passo anterior), é necess�
 	2) sudo apt-get upgrade
 \end{verbatim}
 (Efetivamente atualiza o sistema)
-\\
+\\\\
 %gfortran e Makefile%
 Prosseguindo, é necessário instalar os programas {\bf gfortran} e {\bf MakeFile} em sua máquina, para que o código do \SL\ possa ser corretamente interpretado e compilado. Portanto, ainda no terminal, siga estes comandos para realizar a instalação:
 
@@ -290,50 +290,66 @@ Prosseguindo, é necessário instalar os programas {\bf gfortran} e {\bf MakeFil
 Agora está tudo instalado e configurado para a utilização do \SL. A instalação do visualizador de dados Paraview é apresentada no Capítulo \ref{visu}. Caso a instalação de algum desses pacotes não seja efetuada com sucesso, tente refazer as etapas de configuração, instalação e atualização do sistema. Caso o problema persista entre em contato pelo e-mail: leonardo.monteiro@udesc.br
 
 \subsection{Estrutura}
-Para a utilização do \SL\ existem 3 etapas:
+Para a utilização do \SL\ existem 3 etapas que serão aprofundadas ao longo do presente Manual:
 \begin{itemize}
-	\item Compilação e inicialização do programa:
+	\item Compilação e inicialização do programa (subseções 2.4 e 2.5):
 		\begin{itemize}
 			\item Arquivo gerador/compilador inicial ``Makefile''.
 		\end{itemize}
-	\item Calculo da simulação numérica:
+	\item Calculo da simulação numérica (seção 3):
 		\begin{itemize}
-			\item Algoritmos em Fortran 90 programados para efetivamente realizar a simulação. As condições iniciais e de contorno estão alocadas nesta etapa.
+			\item Algoritmos em Fortran 90 programados para efetivamente realizar a simulação. (As condições iniciais e de contorno estão alocadas nesta etapa).
 		\end{itemize}
 	\item Armazenamento dos dados obtidos:
 		\begin{itemize}
 			\item Pastas ``dados'' e ``arquivos'' que armazenam os dados para etapas de pós-processamento e análises futuras.
 		\end{itemize}
 \end{itemize}
-Na seção \ref{utilizando_o_codigo} a apresentação do código é feita de forma profunda, justamente para que o usuário compreenda a liberdade e tenha autonomia de personalizar o programa de acordo com a sua necessidade.
+
 
 
 \subsection{Compilando}
-A partir do terminal de comando do linux, navegue até o local onde está a pasta do \SL . Ciente dos arquivos presentes na pasta, o usuário pode realizar algumas operações no terminal de fomar individual com o {\bf{Makefile}}, que são:
+A partir do terminal de comando do Linux, navegue até o local onde está localizada a pasta do \SL . Ciente dos arquivos presentes na pasta, o usuário pode digitar alguns comandos no terminal de forma individual com o {\bf{Makefile}}, que são:
 \label{limpar_dados}
 \begin{verbatim}
-make          (para compilar o código)*; 
-make clean    (para remover os arquivos auxiliares criados na compilação);
-make allclean (para remover todos os arquivos não básicos para o código).
+make          
 \end{verbatim} 
+(para compilar o código)*; 
+\begin{verbatim}
+make clean
+\end{verbatim}
+(para remover os arquivos auxiliares criados na compilação);
+\begin{verbatim}
+make allclean\end{verbatim}
+(para remover todos os arquivos não básicos para o código).
+
+\paragraph{} \label{infosmake}Toda vez que o usuário modificar algo na escrita das rotinas no código (nos arquivos .f90), deve-se compilá-lo novamente com o comando \verb!make!. Entretanto, se a mudança for em um módulo então deve-se primeiro remover os arquivos auxiliares (\verb!make clean!) e depois sim compilar (\verb!make!).
+\emph{ACHO QUE PODERIAMOS EXPLICAR MELHOR AQUI O PASSO A PASSO PRA FICAR MAIS DIDATICO P QUEM NUNCA MEXEU}
 
 \paragraph{*}	\label{infosmake}
-O comando {\bf{make}} fornece liberdade ao usuário para definir itens específicos relevantes à compilação dentro do arquivo Makefile. Ativando itens na linha ``OPTFC ='' mudará importantes configurações de compilação, por exemplo:
+O comando {\bf{make}} fornece liberdade ao usuário para definir itens específicos relevantes à compilação dentro do arquivo Makefile. Nesse sentido, ao ativar itens na linha ``OPTFC ='' haverá mudanças importantes nas configurações de compilação, por exemplo:
 \begin{itemize}
 
 
-\item\textbf{-mcmodel=medium} $\rightarrow$ possibilitará o uso de mais pontos para a simulação. Utilizar se estiver ocorrendo erro por causa do excesso de pontos.
+\item\textbf{-mcmodel=medium} $\rightarrow$ possibilitará o uso de mais pontos para a simulação. 
+\\
+(Utilizar se estiver ocorrendo erro por causa do excesso de pontos).
+\
 
-\item\textbf{-fcheck=all} $\rightarrow$ faz uma verificação do código para identificar se está escrito corretamente. Utilizar quando se modificar bruscamente o código para identificar possíveis erros de escrita.
+\item\textbf{-fcheck=all} $\rightarrow$ faz uma verificação do código para identificar se está escrito corretamente.
+\\ (Utilizar quando se modificar bruscamente o código para identificar possíveis erros de escrita).
+\
 
 \end{itemize}
-Contudo, usuários que não tenham conhecimento do uso do Makefile devem utilizar a opção padrão definida.
+Contudo, usuários que não tenham conhecimento do uso do Makefile devem utilizar a opção padrão definida \emph{(EXEMPLIFICAR A OPÇÃO PADRÃO DEFINIDA)}.
 
-Toda vez que o usuário modificar algo na escrita das rotinas no código (nos arquivos .f90) deve-se compilá-lo novamente com o comando \verb!make!. Entretanto, se a mudança for em um módulo então deve-se primeiro remover os arquivos auxiliares (\verb!make clean!) e depois sim compilar (\verb!make!).
 
 \subsection{Rodando}
 
-Depois de compilado, para rodar o \SL\ basta digitar o comando \verb!./rodar_3d! no terminal (note que tanto a pasta na qual o programa foi instalado quanto as pastas ``dados'' e ``arquivos'' vão receber novos arquivos, auxiliares ao processo da simulação). Para interromper a simulação, feche o terminal de comando ou aperte o comando \verb!Ctrl+c!.
+Depois de compilado, para rodar o \SL\ basta digitar no terminal o comando 
+\verb!./rodar_3d! 
+\\\\Note que, tanto a pasta na qual o programa foi instalado, quanto as pastas ``dados'' e ``arquivos'' vão receber novos arquivos auxiliares durante o processo da simulação.
+\\\\Para interromper a simulação, feche o terminal de comando ou aperte o comando \verb!Ctrl+c!.
 
 %\subsection{Problemas conhecidos}
 
@@ -342,6 +358,8 @@ Depois de compilado, para rodar o \SL\ basta digitar o comando \verb!./rodar_3d!
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \section{Personalizando o código}	\label{utilizando_o_codigo}
+
+Na seção \ref{utilizando_o_codigo} a apresentação do código é feita de forma profunda, justamente para que o usuário compreenda a liberdade e tenha autonomia de personalizar o programa de acordo com a sua necessidade.
 
 Nesta seção são definidos: o domínio de cálculo, as funções a serem utilizadas para o cálculo das equações, as condições iniciais e as condições de contorno. Aqui entram as principais modificações e personalizações que o usuário pode fazer de acordo com a sua necessidade.
 
@@ -535,7 +553,6 @@ chezy_t
 	$\rightarrow$  1 para Considerar atrito no fundo
 \end{lstlisting}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Condições de Contorno}
@@ -641,19 +658,19 @@ irest
 
 \newpage
 \section{Visualização Dos Resultados}	\label{visu}
-Como já mencionado, a opção dos autores para visualização dos resultados da simulação é o programa livre \textbf{Paraview}, disponível em \verb|www.paraview.org/|, com versões disponíveis para usuários de Linux e/ou Windows. No Linux (Ambiente Ubuntu) a instalação do paraview pode ser facilmente realizada por meio do comando 
+Como já mencionado, a opção dos autores para visualização dos resultados da simulação é o programa livre \textbf{Paraview}, disponível em \verb|www.paraview.org/|, com versões disponíveis para usuários de Linux e/ou Windows. No Linux (Ambiente Ubuntu), a instalação do paraview pode ser facilmente realizada por meio do comando a seguir:
 
 \begin{verbatim}
 sudo apt install paraview
 \end{verbatim}
 
-No Linux, para visualizar os resultados dos campos das variáveis calculadas com o \SL\ deve-se acessar a pasta "arquivos" \, via terminal e digitar \verb|./paraview visu.xdmf|. No windows, o comando direto via terminal não é possível, sendo assim, a opção é iniciar o Paraview em janela independente e abrir a pasta \verb|visu.xdmf| diretamente nele.
+No \textbf{Linux}, para visualizar os resultados dos campos das variáveis calculadas com o \SL\ deve-se acessar a pasta "arquivos" \, via terminal e digitar \verb|./paraview visu.xdmf|. No \textbf{Windows}, o comando direto via terminal não é possível, sendo assim, a opção é iniciar o Paraview em janela independente e abrir a pasta \verb|visu.xdmf| diretamente nele.
 
 %Prof.: Este comando está em funcionamento para versões do ParaView, instaladas no Ubuntu, anteriores a $5.0$. Para versões mais atuais, o usuário deve utilizar o ParaView pelo programa binário fornecido no site do próprio programa. (não sei se isso é verdade)
 
 %P/ Pedro: Não sei se isso é verdade! Temos que verificar.
 
-O paraview acessará então os dados calculados pelo \SL\ e os apresentará de acordo com as ferramentas disponíveis na versão e interface do programa. O intervalo de criação dos campos (os frames da simulação) para esta posterior visualização é definido pelo parâmetro \verb|dt_frame| no módulo \verb|0_modules.f90|
+O paraview acessará os dados calculados pelo \SL\ e os apresentará de acordo com as ferramentas disponíveis na versão e interface do programa. O intervalo de criação dos campos (os frames da simulação) para esta posterior visualização é definido pelo parâmetro \verb|dt_frame| no módulo \verb|0_modules.f90|
 
 Assim, o usuário, tendo um conhecimento básico do programa, pode usufruir dos resultados de sua simulação.
 
@@ -696,12 +713,11 @@ A primeira vez que estiver acessando o ambiente Ubuntu, será pedido que um usu�
 
 Agora, com o Windows configurado e o ambiente Ubuntu devidamente instalado, basta retornar ao tópico \ref{WindowsUsers} para a instalação do \SL. 
 
-\paragraph{Acessando dados do Windows no subsistema Ubuntu:} No terminal  do subsistema Ubuntu é possível acessar os arquivos do Windows, dentro da pastar "mnt/"~ localizada na pasta raiz do sistema.
+\subsection{Acessando os dados do Windows no subsistema Ubuntu} No terminal  do subsistema Ubuntu é possível acessar os arquivos do Windows, dentro da pastar "mnt/"~, localizada na pasta raiz do sistema.
 
 Caso o SuLi esteja na pasta c: no Windows, é possível acessar a pasta pelo comando: cd ../../mnt/c/suli . Observe que neste exemplo a pasta que possui o código do SuLi se chama "suli".
 
-
-\paragraph{Observação:} Vale frisar que sempre que for necessário realizar uma ação no terminal de comando do computador, o usuário deverá utilizá-lo através do ambiente Ubuntu.
+\paragraph{Observação:} Vale frisar também que sempre que for necessário realizar uma ação no terminal de comando do computador, o usuário deverá utilizá-lo através do ambiente Ubuntu.
 
 A utilização do ambiente Ubuntu como subsistema fica a cargo do próprio usuário, outros subsistemas compatíveis podem oferecer o mesmo resultado (pesquise sobre outras distribuições para subsistemas!).
 
