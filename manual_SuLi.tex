@@ -274,7 +274,7 @@ sudo apt-get upgrade (Para efetivamente atualizar o sistema)
 \end{verbatim}
 
 %gfortran e Makefile%
-Prosseguindo, é necessário instalar os programas {\bf gfortran} e {\bf MakeFile} em sua máquina, para que o código do \SL\ possa ser corretamente interpretado e compilado. Portanto, ainda no terminal, siga estes comandos para realizar a instalação:
+Prosseguindo, é necessário instalar os programas {\bf gfortran}, {\bf MakeFile} e {\bf Biblioteca FFT} em sua máquina, para que o código do \SL\ possa ser corretamente interpretado e compilado. Portanto, ainda no terminal, siga estes comandos para realizar a instalação:
 
 \begin{verbatim}
 sudo apt-get install gfortran	(Para instalar o gfortran)
@@ -282,6 +282,10 @@ sudo apt-get install gfortran	(Para instalar o gfortran)
 
 \begin{verbatim}
 sudo apt-get install make	(Para instalar o MakeFile)
+\end{verbatim}
+
+\begin{verbatim}
+sudo apt-get install libfftw3-dev	(Para instalar a biblioteca FFT)
 \end{verbatim}
 
 Agora está tudo instalado e configurado para a utilização do \SL. A instalação do visualizador de dados Paraview é apresentada na seção \ref{visu}. Caso a instalação de algum desses pacotes não seja efetuada com sucesso, tente refazer as etapas de configuração, instalação e atualização do sistema. Caso o problema persista entre em contato pelo e-mail: leonardo.monteiro@udesc.br
